@@ -1,0 +1,31 @@
+{
+  "name": "gatsby-theme-playlist",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "clean": "gatsby clean"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.17.12",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0"
+  },
+  "devDependencies": {
+    "gatsby": "^2.17.12",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0"
+  },
+  "dependencies": {
+    "@emotion/core": "^10.0.22",
+    "@material-ui/core": "^4.6.1",
+    "@material-ui/icons": "^4.5.1",
+    "@mdx-js/react": "^1.5.1",
+    "gatsby-source-filesystem": "^2.1.36",
+    "gatsby-transformer-yaml": "^2.2.16",
+    "react-player": "^1.14.1",
+    "theme-ui": "^0.2.46"
+  }
+}
