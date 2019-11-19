@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React from "react";
+import React from "react"; // eslint-disable-line no-unused-vars
 import { jsx, Styled, Flex } from "theme-ui";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 

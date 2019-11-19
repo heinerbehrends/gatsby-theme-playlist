@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React from "react";
+import React from "react"; // eslint-disable-line no-unused-vars
 import { jsx, css } from "@emotion/core";
 
 const AspectRatioBox = ({ aspectRatio, children }) => (

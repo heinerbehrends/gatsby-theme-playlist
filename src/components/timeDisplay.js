@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React from "react";
+import React from "react"; // eslint-disable-line no-unused-vars
 import { jsx } from "theme-ui";
 
 const minutes = sec => Math.floor(sec/60);
