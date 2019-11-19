@@ -1,15 +1,26 @@
-import React from 'react';
+/** @jsx jsx */
+import React from "react";
+import { jsx } from "theme-ui";
 
 const ProgressBar = ({ played, seek }) => (
-  <div 
-    style={{height: "16px", width: "100%", margin: 0, padding: 0, backgroundColor: 'lightgray'}} 
+  <div
+    sx={{
+      height: 16,
+      width: "100%",
+      margin: 2,
+      padding: 0,
+      backgroundColor: 'lightgray',
+      border: "0.5px solid gray",
+    }}
     onClick={seek}
   >
-    <div style={{
-      width: `${played * 100}%`, 
-      height: "inherit", 
-      backgroundColor: "hotpink",
-    }} />
+    <div
+      sx={{
+        width: `${played * 100}%`,
+        height: "inherit",
+        backgroundColor: 'primary'
+      }}
+    />
   </div>
 );
 

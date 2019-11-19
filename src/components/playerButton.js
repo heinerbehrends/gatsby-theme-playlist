@@ -1,4 +1,7 @@
+/** @jsx jsx */
 import React from 'react';
+import { jsx } from "@emotion/core";
+
 
 export const nextOrFirst = (array, index) => (
   index + 1 === array.length ? 0 : index + 1
@@ -9,7 +12,7 @@ export const nextOrLast = (array, index) => (
 
 
 const PlayerButton = ({ callback, children }) => (
-  <button onClick={callback}>
+  <button onClick={callback} >
     {children}
   </button>
 );

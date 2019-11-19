@@ -13,6 +13,7 @@ module.exports = {
       options: {
         typeName: 'Song'
       }
-    }
+    },
+    'gatsby-plugin-theme-ui'
   ]
 }
