@@ -1,9 +1,14 @@
 const theme = {  
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
+  breakpoints: ['500px'],
   fonts: {
     body: 'system-ui, sans-serif',
     heading: '"Georgia", serif',
     monospace: 'Menlo, monospace',
+  },
+  shadows: {
+    boxshadow: 'rgba(0, 0, 0, 0.2) 1px 2px 4px 0px;',
+    greenglow: '0px 0px 2px 2px rgba(0, 200, 0, 0.5)',
   },
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96],
   colors: {
@@ -13,6 +18,7 @@ const theme = {
     secondary: 'red',
     accent: 'lightgreen',
     muted: 'darkgreen',
+    bordercolor: 'gray',
     lightgray: '#ddd', 
     lightergray: '#eee',
     darkgray: '#666',

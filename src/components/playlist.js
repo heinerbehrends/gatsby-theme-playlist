@@ -15,7 +15,10 @@ const Playlist = ({ songs, setSong, playingIndex, isPlaying }) => (
               textAlign: "left",
               backgroundColor: playingIndex === index ? "lightergray" : "lightgray",
               border: "0.5px solid gray", 
+              borderTop: index === 0 ? "0.5px solid gray" : 'none',
               fontFamily: 'body',
+              cursor: "pointer", 
+              boxShadow: 'boxshadow',
             }}
             onClick={() => setSong(index)}
           >

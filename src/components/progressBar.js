@@ -10,7 +10,10 @@ const ProgressBar = ({ played, seek }) => (
       margin: 2,
       padding: 0,
       backgroundColor: 'lightgray',
-      border: "0.5px solid gray",
+      border: "0.5px solid",
+      borderColor: 'bordercolor',
+      cursor: "pointer", 
+      boxShadow: 'boxshadow',
     }}
     onClick={seek}
   >

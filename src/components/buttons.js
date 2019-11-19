@@ -1,16 +1,41 @@
 /** @jsx jsx */
 import React from "react"; // eslint-disable-line no-unused-vars
-import { jsx } from "theme-ui";
+import { jsx, Flex, } from "theme-ui";
+import { keyframes } from '@emotion/core';
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import PauseIcon from "@material-ui/icons/Pause";
 import SkipNextIcon from "@material-ui/icons/SkipNext";
 import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
 
 const buttonStyles = {
-  border: "0.5px solid gray",
+  border: "0.5px solid",
+  borderColor: 'bordercolor',
   flexShrink: 0,
   cursor: "pointer", 
 };
+
+const pauseAnimation = keyframes`
+  from {
+    box-shadow: 0px 0px 2px 2px rgba(0, 200, 0, 0.5);
+  } to {
+    box-shadow: 0px 0px 0px 0px rgba(0, 200, 0, 0);
+  }
+`;
+
+const animation = {
+  animation: `${pauseAnimation} 1.5s steps(2, start) infinite`,
+};
+const greenGlow = {
+  boxShadow: 'greenglow',
+};
+
+
+export const nextOrFirst = (array, index) => (
+  index + 1 === array.length ? 0 : index + 1
+);
+export const nextOrLast = (array, index) => (
+  index - 1 < 0 ? array.length - 1 : index - 1
+);
 
 const PlayButton = ({ callback, isPlaying, size }) => (
   <button
@@ -22,13 +47,17 @@ const PlayButton = ({ callback, isPlaying, size }) => (
       margin: 2,
       marginLeft: 0,
       borderRadius: "50%",
+      // boxShadow: 'boxshadow',
+      animation: `${pauseAnimation} 1.5s steps(${isPlaying ? 1 : 2}, end) infinite`
     }}
   >
-    {isPlaying ? (
-      <PauseIcon fontSize="large" />
-    ) : (
-      <PlayArrowIcon fontSize="large" />
-    )}
+    <Flex>
+      {isPlaying ? (
+        <PauseIcon sx={{mx: 'auto'}} fontSize="large" />
+      ) : (
+        <PlayArrowIcon sx={{mx: 'auto'}} fontSize="large" />
+      )}
+    </Flex>
   </button>
 );
 
@@ -39,10 +68,14 @@ const PrevButton = ({ callback }) => (
       ...buttonStyles,
       padding: 2,
       paddingLeft: 3,
+      borderRight: 'none',
       borderRadius: "100px 0 0 100px",
+      boxShadow: 'boxshadow',
     }}
   >
-    <SkipPreviousIcon />
+    <Flex>
+      <SkipPreviousIcon />
+    </Flex>
   </button>
 );
 
@@ -54,13 +87,16 @@ const NextButton = ({ callback }) => (
       padding: 2,
       paddingRight: 3,
       borderRadius: "0 100px 100px 0",
+      boxShadow: 'boxshadow',
     }}
   >
-    <SkipNextIcon />
+    <Flex>
+      <SkipNextIcon />
+    </Flex>
   </button>
 );
 
-const PrevNextButton = ({ prevCallback, nextCallback, size }) => (
+const PrevNextButton = ({ prevCallback, nextCallback }) => (
   <>
     <PrevButton callback={prevCallback} />
     <NextButton callback={nextCallback} />

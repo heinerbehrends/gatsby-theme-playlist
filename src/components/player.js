@@ -1,13 +1,13 @@
 /** @jsx jsx */
 import React, { useState, useRef } from "react"; // eslint-disable-line no-unused-vars
 import { jsx, Styled, Container, ThemeProvider } from "theme-ui";
-import ReactPlayer from "react-player";
 import theme from "../theme/theme";
+import ReactPlayer from "react-player";
 import "normalize.css/normalize.css";
 import Controls from "./controls";
 import Playlist from "./playlist";
-import { nextOrFirst, nextOrLast } from "./playerButton";
 import AspectRatioBox from "./aspectRatioBox";
+import { nextOrFirst, nextOrLast } from "./buttons";
 
 const Player = ({ songs }) => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -27,9 +27,7 @@ const Player = ({ songs }) => {
     <ThemeProvider theme={theme}>
       <Container>
         <Styled.h1>Music</Styled.h1>
-        <AspectRatioBox
-          aspectRatio={360 / 640}
-        >
+        <AspectRatioBox aspectRatio={360 / 640}>
           <ReactPlayer
             sx={{
               position: "absolute",
@@ -38,7 +36,10 @@ const Player = ({ songs }) => {
               cursor: "pointer",
               backgroundImage: `url(${songs[playingIndex].image})`,
               backgroundSize: "contain",
-              backgroundPosition: "center"
+              backgroundPosition: "center",
+              border: "0.5px solid",
+              borderColor: 'bordercolor',
+              boxShadow: 'boxshadow',
             }}
             ref={refContainer}
             url={songs[playingIndex].url}
@@ -76,8 +77,9 @@ const Player = ({ songs }) => {
             setPlayingIndex(nextOrFirst(songs, playingIndex));
           }}
           seekCallback={event => {
-            const played =
-              event.nativeEvent.offsetX / event.currentTarget.clientWidth;
+            const played = (
+              event.nativeEvent.offsetX / event.currentTarget.clientWidth
+            );
             seekTo(played);
             setProgress({ ...progress, played });
           }}
