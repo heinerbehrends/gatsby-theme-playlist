@@ -22,14 +22,6 @@ const pauseAnimation = keyframes`
   }
 `;
 
-const animation = {
-  animation: `${pauseAnimation} 1.5s steps(2, start) infinite`,
-};
-const greenGlow = {
-  boxShadow: 'greenglow',
-};
-
-
 export const nextOrFirst = (array, index) => (
   index + 1 === array.length ? 0 : index + 1
 );
@@ -47,7 +39,7 @@ const PlayButton = ({ callback, isPlaying, size }) => (
       margin: 2,
       marginLeft: 0,
       borderRadius: "50%",
-      // boxShadow: 'boxshadow',
+      boxShadow: 'boxshadow',
       animation: `${pauseAnimation} 1.5s steps(${isPlaying ? 1 : 2}, end) infinite`
     }}
   >
@@ -71,6 +63,9 @@ const PrevButton = ({ callback }) => (
       borderRight: 'none',
       borderRadius: "100px 0 0 100px",
       boxShadow: 'boxshadow',
+      ':active': {
+        boxShadow: '0px 0px 0px 0px rgba(0, 0, 0, 0)'
+      }
     }}
   >
     <Flex>

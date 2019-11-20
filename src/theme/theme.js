@@ -1,6 +1,6 @@
 const theme = {  
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
-  breakpoints: ['500px'],
+  breakpoints: ['360px', '520px'],
   fonts: {
     body: 'system-ui, sans-serif',
     heading: '"Georgia", serif',

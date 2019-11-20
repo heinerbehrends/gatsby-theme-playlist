@@ -2,8 +2,9 @@
 import React from "react"; // eslint-disable-line no-unused-vars
 import { jsx } from "theme-ui";
 
-const ProgressBar = ({ played, seek }) => (
+const ProgressBar = props => (
   <div
+    {...props}
     sx={{
       height: 16,
       width: "100%",
@@ -15,11 +16,11 @@ const ProgressBar = ({ played, seek }) => (
       cursor: "pointer", 
       boxShadow: 'boxshadow',
     }}
-    onClick={seek}
+    onClick={props.seek}
   >
     <div
       sx={{
-        width: `${played * 100}%`,
+        width: `${props.played * 100}%`,
         height: "inherit",
         backgroundColor: 'primary'
       }}
