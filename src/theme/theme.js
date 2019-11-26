@@ -1,5 +1,6 @@
 const theme = {  
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
+  sizes: [0, 5, 10, 20, 40, 60, 80, 100],
   breakpoints: ['360px', '520px'],
   fonts: {
     body: 'system-ui, sans-serif',
@@ -32,7 +33,7 @@ const theme = {
     },
     h1: {
       fontFamily: 'heading',
-      fontSize: 6,
+      fontSize: [5, 6],
       textAlign: 'center',
     },
     ul: {
@@ -41,7 +42,7 @@ const theme = {
     },
     li: {
       listStyleType: 'none',
-      fontSize: 2,
+      fontSize: [1, 2],
       fontFamily: 'body',
     },
     

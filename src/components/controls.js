@@ -15,27 +15,24 @@ const Controls = ({
   duration
 }) => (
   <>
-    <ProgressBar 
-      played={progress.played} 
+    <ProgressBar
+      played={progress.played}
       seek={seekCallback}
-      sx={{display: ['block', 'block', 'none'], m: 0, mt: [2, 2, 0]}}
+      sx={{ display: ["block", "block", "none"], m: 0, mt: [2, 2, 0] }}
     />
-    <Flex sx={{ alignItems: "center", px: 0, py: 2, }}>
+    <Flex sx={{ alignItems: "center", px: 0, py: 2 }}>
       <Buttons
         isPlaying={isPlaying}
         playCallback={playCallback}
         prevCallback={prevCallback}
         nextCallback={nextCallback}
       />
-      <ProgressBar 
-        played={progress.played} 
+      <ProgressBar
+        played={progress.played}
         seek={seekCallback}
-        sx={{display: ['none', 'none', 'block']}}
+        sx={{ display: ["none", "none", "block"] }}
       />
-      <TimeDisplay 
-        played={progress.playedSeconds} 
-        duration={duration}
-      />
+      <TimeDisplay played={progress.playedSeconds} duration={duration} />
     </Flex>
   </>
 );

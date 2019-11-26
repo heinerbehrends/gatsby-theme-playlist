@@ -10,11 +10,11 @@ const ProgressBar = props => (
       width: "100%",
       margin: 2,
       padding: 0,
-      backgroundColor: 'lightgray',
+      backgroundColor: "lightgray",
       border: "0.5px solid",
-      borderColor: 'bordercolor',
-      cursor: "pointer", 
-      boxShadow: 'boxshadow',
+      borderColor: "bordercolor",
+      cursor: "pointer",
+      boxShadow: "boxshadow"
     }}
     onClick={props.seek}
   >
@@ -22,7 +22,7 @@ const ProgressBar = props => (
       sx={{
         width: `${props.played * 100}%`,
         height: "inherit",
-        backgroundColor: 'primary'
+        backgroundColor: "primary"
       }}
     />
   </div>

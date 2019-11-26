@@ -7,18 +7,20 @@ import "normalize.css/normalize.css";
 import Controls from "./controls";
 import Playlist from "./playlist";
 import AspectRatioBox from "./aspectRatioBox";
-import { nextOrFirst, nextOrLast } from "./buttons";
+import { nextPrev, nextOrFirst, prevOrLast } from "./buttons";
+
+const initProgress = {
+  playedSeconds: 0,
+  played: 0,
+  loadedSeconds: 0,
+  loaded: 0
+};
 
 const Player = ({ songs }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(null);
   const [playingIndex, setPlayingIndex] = useState(0);
-  const [progress, setProgress] = useState({
-    playedSeconds: 0,
-    played: 0,
-    loadedSeconds: 0,
-    loaded: 0
-  });
+  const [progress, setProgress] = useState(initProgress);
 
   const refContainer = useRef(ReactPlayer);
   const seekTo = refContainer.current.seekTo;
@@ -38,8 +40,8 @@ const Player = ({ songs }) => {
               backgroundSize: "contain",
               backgroundPosition: "center",
               border: "0.5px solid",
-              borderColor: 'bordercolor',
-              boxShadow: 'boxshadow',
+              borderColor: "bordercolor",
+              boxShadow: "boxshadow"
             }}
             ref={refContainer}
             url={songs[playingIndex].url}
@@ -70,16 +72,25 @@ const Player = ({ songs }) => {
           playCallback={() => {
             setIsPlaying(isPlaying ? false : true);
           }}
-          prevCallback={() => {
-            setPlayingIndex(nextOrLast(songs, playingIndex));
-          }}
-          nextCallback={() => {
-            setPlayingIndex(nextOrFirst(songs, playingIndex));
-          }}
+          prevCallback={() =>
+            nextPrev(prevOrLast)({
+              songs,
+              playingIndex,
+              setPlayingIndex,
+              setProgress
+            })
+          }
+          nextCallback={() =>
+            nextPrev(nextOrFirst)({
+              songs,
+              playingIndex,
+              setPlayingIndex,
+              setProgress
+            })
+          }
           seekCallback={event => {
-            const played = (
-              event.nativeEvent.offsetX / event.currentTarget.clientWidth
-            );
+            const played =
+              event.nativeEvent.offsetX / event.currentTarget.clientWidth;
             seekTo(played);
             setProgress({ ...progress, played });
           }}

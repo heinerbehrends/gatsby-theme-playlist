@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React from "react"; // eslint-disable-line no-unused-vars
-import { jsx, Flex, } from "theme-ui";
-import { keyframes } from '@emotion/core';
+import { jsx, Flex } from "theme-ui";
+import { keyframes } from "@emotion/core";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import PauseIcon from "@material-ui/icons/Pause";
 import SkipNextIcon from "@material-ui/icons/SkipNext";
@@ -9,9 +9,9 @@ import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
 
 const buttonStyles = {
   border: "0.5px solid",
-  borderColor: 'bordercolor',
+  borderColor: "bordercolor",
   flexShrink: 0,
-  cursor: "pointer", 
+  cursor: "pointer"
 };
 
 const pauseAnimation = keyframes`
@@ -22,32 +22,47 @@ const pauseAnimation = keyframes`
   }
 `;
 
-export const nextOrFirst = (array, index) => (
-  index + 1 === array.length ? 0 : index + 1
-);
-export const nextOrLast = (array, index) => (
-  index - 1 < 0 ? array.length - 1 : index - 1
-);
+export const nextOrFirst = (array, index) =>
+  index + 1 === array.length ? 0 : index + 1;
+export const prevOrLast = (array, index) =>
+  index - 1 < 0 ? array.length - 1 : index - 1;
+export const nextPrev = firstLastLoop => ({
+  songs,
+  playingIndex,
+  setPlayingIndex,
+  setProgress
+}) => {
+  console.log(songs);
+  setPlayingIndex(firstLastLoop(songs, playingIndex));
+  setProgress({
+    playedSeconds: 0,
+    played: 0,
+    loadedSeconds: 0,
+    loaded: 0
+  });
+};
 
-const PlayButton = ({ callback, isPlaying, size }) => (
+const PlayButton = ({ callback, isPlaying }) => (
   <button
     onClick={callback}
     sx={{
       ...buttonStyles,
-      height: size,
-      width: size,
+      height: [5, 6],
+      width: [5, 6],
       margin: 2,
       marginLeft: 0,
       borderRadius: "50%",
-      boxShadow: 'boxshadow',
-      animation: `${pauseAnimation} 1.5s steps(${isPlaying ? 1 : 2}, end) infinite`
+      boxShadow: "boxshadow",
+      animation: `${pauseAnimation} 1.5s steps(${
+        isPlaying ? 1 : 2
+      }, end) infinite`
     }}
   >
     <Flex>
       {isPlaying ? (
-        <PauseIcon sx={{mx: 'auto'}} fontSize="large" />
+        <PauseIcon sx={{ mx: "auto" }} fontSize="large" />
       ) : (
-        <PlayArrowIcon sx={{mx: 'auto'}} fontSize="large" />
+        <PlayArrowIcon sx={{ mx: "auto" }} fontSize="large" />
       )}
     </Flex>
   </button>
@@ -58,13 +73,13 @@ const PrevButton = ({ callback }) => (
     onClick={callback}
     sx={{
       ...buttonStyles,
-      padding: 2,
-      paddingLeft: 3,
-      borderRight: 'none',
+      padding: [1, 2],
+      paddingLeft: [2, 3],
+      borderRight: "none",
       borderRadius: "100px 0 0 100px",
-      boxShadow: 'boxshadow',
-      ':active': {
-        boxShadow: '0px 0px 0px 0px rgba(0, 0, 0, 0)'
+      boxShadow: "boxshadow",
+      ":active": {
+        boxShadow: "0px 0px 0px 0px rgba(0, 0, 0, 0)"
       }
     }}
   >
@@ -79,10 +94,13 @@ const NextButton = ({ callback }) => (
     onClick={callback}
     sx={{
       ...buttonStyles,
-      padding: 2,
-      paddingRight: 3,
+      padding: [1, 2],
+      paddingRight: [2, 3],
       borderRadius: "0 100px 100px 0",
-      boxShadow: 'boxshadow',
+      boxShadow: "boxshadow",
+      ":active": {
+        boxShadow: "0px 0px 0px 0px rgba(0, 0, 0, 0)"
+      }
     }}
   >
     <Flex>
@@ -105,7 +123,7 @@ const Buttons = ({ isPlaying, playCallback, prevCallback, nextCallback }) => (
       prevCallback={prevCallback}
       nextCallback={nextCallback}
       size="80px"
-      sx={{padding: 2}}
+      sx={{ padding: 2 }}
     />
   </>
 );

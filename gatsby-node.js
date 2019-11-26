@@ -1,16 +1,16 @@
-const fs = require('fs');
+const fs = require("fs");
 
 // make sure the data directory exists
 exports.onPreBootstrap = ({ reporter }) => {
-  const contentPath = 'data';
+  const contentPath = "data";
 
   if (!fs.existsSync(contentPath)) {
-    reporter.info(`creating the ${contentPath} directory`)
-    fs.mkdirSync(contentPath)
+    reporter.info(`creating the ${contentPath} directory`);
+    fs.mkdirSync(contentPath);
   }
-}
+};
 
-// define the song type 
+// define the song type
 exports.sourceNodes = ({ actions }) => {
   actions.createTypes(`
     type Song implements Node {
@@ -21,15 +21,14 @@ exports.sourceNodes = ({ actions }) => {
       url: String!
       image: String
     }
-  `)
-}
+  `);
+};
 
 // create a page for the playlist
-exports.createPages = async ({ actions, graphql, reporter }) => {
-  const basePath = '/';
+exports.createPages = async ({ actions }) => {
+  const basePath = "/";
   actions.createPage({
     path: basePath,
-    component: require.resolve('./src/templates/playlistTemplate'),
-  })
-}
-
+    component: require.resolve("./src/templates/playlistTemplate")
+  });
+};
