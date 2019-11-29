@@ -57,6 +57,7 @@ const Player = ({ songs, children }) => {
     ...buttonProps,
     ref: refContainer,
     url: songs[playingIndex].url,
+    image: songs[playingIndex].image,
     playing: isPlaying,
     onProgress: data => setProgress(data),
     onDuration: duration => setDuration(duration),

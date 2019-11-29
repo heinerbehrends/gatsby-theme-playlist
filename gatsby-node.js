@@ -1,8 +1,8 @@
-const fs = require("fs");
+const fs = require('fs');
 
 // make sure the data directory exists
 exports.onPreBootstrap = ({ reporter }) => {
-  const contentPath = "data";
+  const contentPath = 'data';
 
   if (!fs.existsSync(contentPath)) {
     reporter.info(`creating the ${contentPath} directory`);
@@ -25,10 +25,10 @@ exports.sourceNodes = ({ actions }) => {
 };
 
 // create a page for the playlist
-exports.createPages = async ({ actions }) => {
-  const basePath = "/";
-  actions.createPage({
-    path: basePath,
-    component: require.resolve("./src/templates/playlistTemplate")
-  });
-};
+// exports.createPages = async ({ actions }) => {
+//   const basePath = "/";
+//   actions.createPage({
+//     path: basePath,
+//     component: require.resolve("./src/templates/playlistTemplate")
+//   });
+// };
