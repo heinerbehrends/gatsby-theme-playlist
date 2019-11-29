@@ -1,17 +1,18 @@
 /** @jsx jsx */
-import React from "react"; // eslint-disable-line no-unused-vars
-import { jsx, Flex } from "theme-ui";
-import { keyframes } from "@emotion/core";
-import PlayArrowIcon from "@material-ui/icons/PlayArrow";
-import PauseIcon from "@material-ui/icons/Pause";
-import SkipNextIcon from "@material-ui/icons/SkipNext";
-import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
+import React from 'react'; // eslint-disable-line no-unused-vars
+import { jsx, Flex } from 'theme-ui';
+import { keyframes } from '@emotion/core';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import PauseIcon from '@material-ui/icons/Pause';
+import SkipNextIcon from '@material-ui/icons/SkipNext';
+import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 
 const buttonStyles = {
-  border: "0.5px solid",
-  borderColor: "bordercolor",
+  border: '0.5px solid',
+  borderColor: 'bordercolor',
   flexShrink: 0,
-  cursor: "pointer"
+  cursor: 'pointer',
+  boxShadow: 'boxshadow',
 };
 
 const pauseAnimation = keyframes`
@@ -30,15 +31,14 @@ export const nextPrev = firstLastLoop => ({
   songs,
   playingIndex,
   setPlayingIndex,
-  setProgress
+  setProgress,
 }) => {
-  console.log(songs);
   setPlayingIndex(firstLastLoop(songs, playingIndex));
   setProgress({
     playedSeconds: 0,
     played: 0,
     loadedSeconds: 0,
-    loaded: 0
+    loaded: 0,
   });
 };
 
@@ -51,18 +51,17 @@ const PlayButton = ({ callback, isPlaying }) => (
       width: [5, 6],
       margin: 2,
       marginLeft: 0,
-      borderRadius: "50%",
-      boxShadow: "boxshadow",
+      borderRadius: '50%',
       animation: `${pauseAnimation} 1.5s steps(${
         isPlaying ? 1 : 2
-      }, end) infinite`
+      }, end) infinite`,
     }}
   >
     <Flex>
       {isPlaying ? (
-        <PauseIcon sx={{ mx: "auto" }} fontSize="large" />
+        <PauseIcon sx={{ mx: 'auto' }} fontSize="large" />
       ) : (
-        <PlayArrowIcon sx={{ mx: "auto" }} fontSize="large" />
+        <PlayArrowIcon sx={{ mx: 'auto' }} fontSize="large" />
       )}
     </Flex>
   </button>
@@ -75,12 +74,11 @@ const PrevButton = ({ callback }) => (
       ...buttonStyles,
       padding: [1, 2],
       paddingLeft: [2, 3],
-      borderRight: "none",
-      borderRadius: "100px 0 0 100px",
-      boxShadow: "boxshadow",
-      ":active": {
-        boxShadow: "0px 0px 0px 0px rgba(0, 0, 0, 0)"
-      }
+      borderRight: 'none',
+      borderRadius: '100px 0 0 100px',
+      ':active': {
+        boxShadow: '0px 0px 0px 0px rgba(0, 0, 0, 0)',
+      },
     }}
   >
     <Flex>
@@ -96,11 +94,10 @@ const NextButton = ({ callback }) => (
       ...buttonStyles,
       padding: [1, 2],
       paddingRight: [2, 3],
-      borderRadius: "0 100px 100px 0",
-      boxShadow: "boxshadow",
-      ":active": {
-        boxShadow: "0px 0px 0px 0px rgba(0, 0, 0, 0)"
-      }
+      borderRadius: '0 100px 100px 0',
+      ':active': {
+        boxShadow: '0px 0px 0px 0px rgba(0, 0, 0, 0)',
+      },
     }}
   >
     <Flex>
