@@ -10,7 +10,7 @@ const initProgress = {
   loaded: 0,
 };
 
-const Player = ({ songs, children }) => {
+function Player({ songs, children }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(null);
   const [playingIndex, setPlayingIndex] = useState(0);
@@ -18,6 +18,8 @@ const Player = ({ songs, children }) => {
 
   const refContainer = useRef(ReactPlayer);
   const seekTo = refContainer.current.seekTo;
+
+  console.log(seekTo);
 
   const playlistProps = {
     songs,
@@ -81,6 +83,6 @@ const Player = ({ songs, children }) => {
     },
   };
   return children({ playlistProps, controlsProps, playerProps });
-};
+}
 
 export default Player;

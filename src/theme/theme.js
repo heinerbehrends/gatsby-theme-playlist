@@ -1,5 +1,5 @@
-const theme = {  
-  space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
+const theme = {
+  space: [0, 4, 8, 16, 24, 32, 64, 128, 256, 512],
   sizes: [0, 5, 10, 20, 40, 60, 80, 100],
   breakpoints: ['360px', '520px'],
   fonts: {
@@ -20,7 +20,7 @@ const theme = {
     accent: 'lightgreen',
     muted: 'darkgreen',
     bordercolor: 'gray',
-    lightgray: '#ddd', 
+    lightgray: '#ddd',
     lightergray: '#eee',
     darkgray: '#666',
     darkergray: '#333',
@@ -45,8 +45,7 @@ const theme = {
       fontSize: [1, 2],
       fontFamily: 'body',
     },
-    
-  }
+  },
 };
 
 export default theme;

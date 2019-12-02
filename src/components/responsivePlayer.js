@@ -4,11 +4,15 @@ import { jsx } from 'theme-ui';
 import AspectRatioBox from '../components/aspectRatioBox';
 import ReactPlayer from 'react-player';
 
-function ResponsivePlayer(props) {
+const ResponsivePlayer = React.forwardRef((props, ref) => {
+  // const refContainer = React.useRef(ReactPlayer);
+  const seekTo = ref.current.seekTo;
+  console.log(seekTo);
   return (
     <AspectRatioBox aspectRatio={360 / 640}>
       <ReactPlayer
         {...props}
+        ref={ref}
         sx={{
           position: 'absolute',
           top: 0,
@@ -24,6 +28,6 @@ function ResponsivePlayer(props) {
       />
     </AspectRatioBox>
   );
-}
+});
 
 export default ResponsivePlayer;

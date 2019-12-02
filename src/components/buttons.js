@@ -49,7 +49,7 @@ const PlayButton = ({ callback, isPlaying }) => (
       ...buttonStyles,
       height: [5, 6],
       width: [5, 6],
-      margin: 2,
+      marginRight: 3,
       marginLeft: 0,
       borderRadius: '50%',
       animation: `${pauseAnimation} 1.5s steps(${

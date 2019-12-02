@@ -2,6 +2,7 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
 import { jsx, Styled, Flex } from 'theme-ui';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 
 const Playlist = ({ songs, setPlayingIndex, playingIndex, isPlaying }) => (
   <section>
@@ -12,6 +13,7 @@ const Playlist = ({ songs, setPlayingIndex, playingIndex, isPlaying }) => (
             sx={{
               padding: 3,
               width: '100%',
+              fontSize: 2,
               textAlign: 'left',
               backgroundColor:
                 playingIndex === index ? 'lightergray' : 'lightgray',
@@ -30,6 +32,7 @@ const Playlist = ({ songs, setPlayingIndex, playingIndex, isPlaying }) => (
                 ' '
               )}
               <span sx={{ margin: 0 }}>{title}</span>
+              <InfoOutlinedIcon sx={{ marginLeft: 'auto' }} />
             </Flex>
           </button>
         </Styled.li>
