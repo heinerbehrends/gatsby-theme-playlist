@@ -8,9 +8,11 @@ import TimeDisplay from './timeDisplay';
 const Controls = ({
   progress,
   isPlaying,
+  isMuted,
   playCallback,
   prevCallback,
   nextCallback,
+  muteCallback,
   seekCallback,
   duration,
 }) => (
@@ -23,9 +25,11 @@ const Controls = ({
     <Flex sx={{ alignItems: 'center', px: 0, py: 2 }}>
       <Buttons
         isPlaying={isPlaying}
+        isMuted={isMuted}
         playCallback={playCallback}
         prevCallback={prevCallback}
         nextCallback={nextCallback}
+        muteCallback={muteCallback}
       />
       <ProgressBar
         played={progress.played}

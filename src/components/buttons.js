@@ -6,6 +6,8 @@ import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import PauseIcon from '@material-ui/icons/Pause';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
+import MuteIcon from '@material-ui/icons/VolumeOff';
+import UnmuteIcon from '@material-ui/icons/VolumeUp';
 
 const buttonStyles = {
   border: '0.5px solid',
@@ -94,6 +96,7 @@ const NextButton = ({ callback }) => (
       ...buttonStyles,
       padding: [1, 2],
       paddingRight: [2, 3],
+      marginRight: 3,
       borderRadius: '0 100px 100px 0',
       ':active': {
         boxShadow: '0px 0px 0px 0px rgba(0, 0, 0, 0)',
@@ -113,15 +116,42 @@ const PrevNextButton = ({ prevCallback, nextCallback }) => (
   </>
 );
 
-const Buttons = ({ isPlaying, playCallback, prevCallback, nextCallback }) => (
+const MuteButton = ({ callback, isMuted }) => (
+  <button
+    onClick={() => callback(isMuted)}
+    sx={{
+      ...buttonStyles,
+      padding: [1, 2],
+      borderRight: 'none',
+      borderRadius: '50%',
+      color: isMuted ? 'red' : 'text',
+      ':active': {
+        boxShadow: '0px 0px 0px 0px rgba(0, 0, 0, 0)',
+      },
+    }}
+  >
+    <Flex>
+      <MuteIcon />
+    </Flex>
+  </button>
+);
+
+const Buttons = ({
+  isPlaying,
+  isMuted,
+  playCallback,
+  prevCallback,
+  nextCallback,
+  muteCallback,
+}) => (
   <>
     <PlayButton callback={playCallback} isPlaying={isPlaying} size="80px" />
     <PrevNextButton
       prevCallback={prevCallback}
       nextCallback={nextCallback}
       size="80px"
-      sx={{ padding: 2 }}
     />
+    <MuteButton callback={muteCallback} isMuted={isMuted} />
   </>
 );
 

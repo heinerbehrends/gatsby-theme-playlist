@@ -14,12 +14,11 @@ function Player({ songs, children }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(null);
   const [playingIndex, setPlayingIndex] = useState(0);
+  const [isMuted, setIsMuted] = useState(false);
   const [progress, setProgress] = useState(initProgress);
 
   const refContainer = useRef(ReactPlayer);
   const seekTo = refContainer.current.seekTo;
-
-  console.log(seekTo);
 
   const playlistProps = {
     songs,
@@ -51,7 +50,11 @@ function Player({ songs, children }) {
       seekTo(played);
       setProgress({ ...progress, played });
     },
+    muteCallback: isMuted => {
+      setIsMuted(isMuted ? false : true);
+    },
     isPlaying,
+    isMuted,
     progress,
     duration,
   };
@@ -61,6 +64,8 @@ function Player({ songs, children }) {
     url: songs[playingIndex].url,
     image: songs[playingIndex].image,
     playing: isPlaying,
+    volume: 0.7,
+    muted: isMuted,
     onProgress: data => setProgress(data),
     onDuration: duration => setDuration(duration),
     onEnded: () => {
